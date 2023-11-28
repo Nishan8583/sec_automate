@@ -13,12 +13,12 @@
  - [x] Install gobuster
  - [x] Install dirsearch
  - [x] Install nuclei
- - [ ] Install Impacket tools
+ - [x] Install Impacket tools
  - [x] Install rpcclient
- - [ ] Install windapsearch
- - [ ] Install Bloodhound
- - [ ] Install enum4linux
- - [ ] Install linpeas
+ - [x] Install windapsearch
+ - [x] Install Bloodhound
+ - [x] Install enum4linux
+ - [x] Install linpeas
  
 [ ] Test
  - [ ] Exec into container

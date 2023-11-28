@@ -21,7 +21,17 @@ RUN echo "PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bashrc
 RUN /usr/local/go/bin/go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 
 # Install mage
-RUN git clone https://github.com/ropnop/go-windapsearch.git && cd go-windapsearch && /usr/local/go/bin/go get github.com/magefile/mage && mage build && ./windapsearch --version
+RUN git clone https://github.com/ropnop/windapsearch.git
+RUN apt-get install python3-pip -y
+RUN apt install python3-ldap -y
+RUN cp windapsearch/windapsearch.py /usr/local/bin/
 
 # Install impacket
-RUN sudo apt install python3-pip && pip3 install pipx && python3 -m pipx install impacket
+RUN apt install pipx -y
+RUN pipx ensurepath && pipx install impacket
+
+RUN mkdir /priv_check
+
+RUN git clone https://github.com/CiscoCXSecurity/enum4linux.git && cp enum4linux/enum4linux.pl /priv_check/
+
+RUN wget https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh && cp linpeas.sh /priv_check/
